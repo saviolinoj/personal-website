@@ -1,0 +1,307 @@
+/* Global reset & smooth scroll */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Body background */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #141e30, #0b0c10);
+  color: #f5f7ff;
+}
+
+/* Extra background accent behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(120, 119, 255, 0.18), transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(255, 99, 195, 0.18), transparent 55%);
+  opacity: 0.9;
+  z-index: -2;
+}
+
+/* Header & navigation */
+header {
+  padding: 20px 40px;
+  background: rgba(10, 12, 25, 0.9);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #d1d9ff;
+  margin-right: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+}
+
+nav a:hover,
+nav .active {
+  background: linear-gradient(135deg, #38b6ff, #9b5cff);
+  color: #050816;
+  transform: translateY(-1px);
+}
+
+/* Main layout */
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+}
+
+/* Glassmorphism cards for sections */
+.section-card {
+  background: radial-gradient(circle at top left, rgba(82, 113, 255, 0.25), transparent),
+              rgba(15, 23, 42, 0.85);
+  border-radius: 18px;
+  padding: 24px 26px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(148, 163, 255, 0.3);
+  margin-bottom: 26px;
+}
+
+/* Profile photo */
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(148, 163, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  display: block;
+  margin: 0 auto 18px auto;
+}
+
+/* Headings */
+h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #38b6ff, #ff6ec7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Paragraphs & lists */
+p {
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #38b6ff, #9b5cff);
+  color: #050816;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(80, 130, 255, 0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(80, 130, 255, 0.7);
+}
+
+/* Gallery grid (also reused for home mini-cards) */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Images for gallery */
+.gallery-grid img {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.gallery-grid img:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+}
+
+/* Mini cards used in Home page */
+.mini-card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
+  padding: 16px 18px;
+  border: 1px solid rgba(148, 163, 255, 0.4);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
+}
+
+.mini-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.mini-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #d1d5ff;
+}
+
+/* Contact form */
+form label {
+  display: block;
+  margin: 10px 0 4px;
+  font-weight: 500;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 255, 0.3);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7ff;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 22px 10px 30px;
+  border-top: 1px solid rgba(148, 163, 255, 0.25);
+  background: rgba(5, 8, 22, 0.95);
+  color: #9ca3ff;
+  font-size: 14px;
+}
+
+/* Custom cursor circle */
+.cursor-dot {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(80, 200, 255, 0.9), transparent);
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+}
+
+/* Typing animation */
+.typing-wrapper {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.typing-text {
+  display: inline-block;
+  border-right: 2px solid rgba(248, 250, 252, 0.9);
+  padding-right: 4px;
+  animation: typing 5s steps(45, end) infinite alternate;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: #f9fafb;
+  margin-left: 2px;
+  animation: cursorBlink 0.7s infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 1; }
+}
+
+/* Floating animated shapes in background */
+.floating-shapes {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-shapes span {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,182,255,0.65), transparent 60%);
+  animation: float 18s linear infinite;
+  opacity: 0.45;
+}
+
+.floating-shapes span:nth-child(1) { top: 5%; left: 10%; }
+.floating-shapes span:nth-child(2) { top: 60%; left: 5%; animation-duration: 22s; }
+.floating-shapes span:nth-child(3) { top: 20%; right: 8%; animation-duration: 20s; }
+.floating-shapes span:nth-child(4) { bottom: 10%; right: 20%; animation-duration: 24s; }
+.floating-shapes span:nth-child(5) { bottom: 30%; left: 40%; animation-duration: 26s; }
+
+@keyframes float {
+  0%   { transform: translateY(0) translateX(0); }
+  50%  { transform: translateY(-40px) translateX(20px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  header {
+    padding: 14px 18px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  nav a {
+    margin-right: 8px;
+    padding: 5px 10px;
+  }
+
+  main {
+    padding: 0 14px 40px;
+  }
+}
